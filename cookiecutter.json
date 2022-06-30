@@ -1,0 +1,10 @@
+{
+    "project_name": "My Project",
+    "app_name": "{{ cookiecutter.project_name|lower|replace(' ', '_') }}",
+    "command_name": "{{ cookiecutter.project_name|lower|replace(' ', '_') }}",
+    "pypackage_name": "{{ cookiecutter.project_name|lower|replace(' ', '_')|replace('-', '_') }}",
+    "main_function": "do_magic",
+    "description": "<description>",
+
+    "use_github_actions": ["yes", "no"]
+}
