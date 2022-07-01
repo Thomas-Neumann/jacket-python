@@ -51,6 +51,7 @@ if __name__ == "__main__":
     configure_loghandle(LH)
 
     # documentation: https://docs.python.org/3/library/argparse.html
+    # pylint: disable=line-too-long
     parser = argparse.ArgumentParser(description='{{cookiecutter.description}}', allow_abbrev=False)
     # <some example parameters>
     parser.add_argument('--version', action='version', version=f"%(prog)s v{{ '{' }}{{cookiecutter.pypackage_name}}.VERSIONSTRING{{ '}' }}")
