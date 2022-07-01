@@ -19,6 +19,7 @@ from typing import Dict, List, Optional
 # extra imports (make sure to add them to requirements.txt!)
 import colorama
 import coloredlogs
+import yaml
 
 sys.path.insert(0, os.path.dirname(__file__) + "/src")
 
@@ -35,6 +36,15 @@ def configure_loghandle(lh: logging.Logger, level: str = 'INFO') -> None:
     # documentation: https://pypi.org/project/coloredlogs/
     colorama.init()
     coloredlogs.install(logger=lh, level=level, fmt='%(levelname).1s: %(message)s')
+
+
+def read_yamlfile(filename: str) -> Dict:
+    """
+    read the provided file and parse as YAML
+    """
+    with open(filename, 'r') as fh:
+        content = yaml.safe_load(fh)
+    return content
 
 
 if __name__ == "__main__":
