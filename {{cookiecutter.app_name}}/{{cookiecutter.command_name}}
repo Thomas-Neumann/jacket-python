@@ -14,18 +14,31 @@ import logging
 import os
 import sys
 
+from typing import Dict, List, Optional
+
 # extra imports (make sure to add them to requirements.txt!)
-# <add extra imports here, e.g. 'boto3' 'requests'>
+import colorama
+import coloredlogs
 
 sys.path.insert(0, os.path.dirname(__file__) + "/src")
 
 # pylint: disable=wrong-import-position
 import {{cookiecutter.pypackage_name}}
 
+LH = logging.getLogger(__name__)
+
+
+def configure_loghandle(lh: logging.Logger, level: str = 'INFO') -> None:
+    """
+    configure a nice format for command line logging -> 'I: <message>'
+    """
+    # documentation: https://pypi.org/project/coloredlogs/
+    colorama.init()
+    coloredlogs.install(logger=lh, level=level, fmt='%(levelname).1s: %(message)s')
+
 
 if __name__ == "__main__":
-    # configure a nice format for command line logging -> 'I: <message>'
-    logging.basicConfig(format='%(levelname).1s: %(message)s', level=logging.INFO)
+    configure_loghandle(LH)
 
     # documentation: https://docs.python.org/3/library/argparse.html
     parser = argparse.ArgumentParser(description='{{cookiecutter.description}}', allow_abbrev=False)

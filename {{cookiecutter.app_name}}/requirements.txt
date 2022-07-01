@@ -1,0 +1,5 @@
+# required for colored console output
+colorama==0.4.4
+coloredlogs==7.3
+# other requirements
+# ...
